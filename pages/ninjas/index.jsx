@@ -2,18 +2,18 @@ import Head from 'next/head';
 import Link from 'next/link';
 import styles from '../../styles/Ninjas.module.css';
 
-import { server } from '../../config/index.jsx';
+// import { server } from '../../config/index.jsx';
 
 export const getStaticProps = async () => {
-    const res = await fetch(`${server}/api/devs`);
-    const devsData = await res.json();
+    // const res = await fetch(`${server}/api/devs`);
+    // const devsData = await res.json();
 
     const fetchData = await fetch('https://jsonplaceholder.typicode.com/users');
     const jsonData = await fetchData.json();
     return {
         props: {
             data: jsonData,
-            devsData
+            // devsData
         }
     }
 };
@@ -27,8 +27,8 @@ const Ninjas = ({ data, devsData }) => {
                 <meta name="keywords" content="Faisaladisoe\'s ninja list"/>
             </Head>
             <h1>This is Ninja List</h1>
-            { devsData ? 
-                devsData.map((datum, index) => (
+            { data ? 
+                data.map((datum, index) => (
                     <Link href={ `/ninjas/${datum.identifier}` } key={ index }>
                         <a className={ styles.single }>
                             <h3>{ datum.fullname }</h3>
