@@ -5,7 +5,7 @@ import styles from '../../styles/Ninjas.module.css';
 import { server } from '../../config/index.jsx';
 
 export const getStaticProps = async () => {
-    const res = await fetch('https://jsonplaceholder.typicode.com/users');
+    const res = await fetch(`${server}/api/devs`);
     const devsData = await res.json();
 
     return {
@@ -26,9 +26,9 @@ const Ninjas = ({ devsData }) => {
             <h1>This is Ninja List</h1>
             { devsData ? 
                 devsData.map((datum, index) => (
-                    <Link href={ `/ninjas/${datum.id}` } key={ index }>
+                    <Link href={ `/ninjas/${datum.identifier}` } key={ index }>
                         <a className={ styles.single }>
-                            <h3>{ datum.name }</h3>
+                            <h3>{ datum.fullname }</h3>
                         </a>
                     </Link>
                 ))
