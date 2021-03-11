@@ -5,7 +5,7 @@ export const getStaticPaths = async () => {
     const dataPath = await devsPath.json();
 
     const paths = dataPath.map(data => ({
-        params: { identifier: data.id.toString() }
+        params: { id: data.id.toString() }
     }));
     
     return {
