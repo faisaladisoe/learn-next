@@ -26,7 +26,7 @@ const Ninjas = ({ devsData }) => {
             <h1>This is Ninja List</h1>
             { devsData ? 
                 devsData.map((datum, index) => (
-                    <Link href={ `/ninjas/${datum.identifier}` } key={ index }>
+                    <Link href={ `/ninjas/${datum.id}` } key={ index }>
                         <a className={ styles.single }>
                             <h3>{ datum.name }</h3>
                         </a>
